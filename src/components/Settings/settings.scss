@@ -1,0 +1,75 @@
+.settings {
+  z-index: 9999;
+  position: fixed;
+  right: -202px;
+  top: 10px;
+  width: 260px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  transition: right 0.5s ease-in;
+
+  &--open {
+    right: 0;
+  }
+
+  // selecteur descendant
+  // on cherche un element settings__toggle dont le parent direct
+  // possede la classe settings--open
+  &--open > &__toggle {
+    transform: rotate(45deg);
+  }
+
+  &__toggle {
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-right: 1rem;
+    font-size: 30px;
+    line-height: 0px;
+    padding: 0;
+    color: #5300FF;
+    transition: transform 0.4s ease-in;
+  }
+
+  &__form {
+    width: 80%;
+  }
+
+  &__input,
+  &__send {
+    border: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  &__input {
+    background-color: white;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  &__send {
+    background-color: #5300FF;
+    color: white;
+  }
+
+  &__logged {
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    background-color: #aaa8ae94;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  &__error {
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    background-color: hsl(0deg 46% 57% / 76%);
+    text-align: center;
+  }
+}

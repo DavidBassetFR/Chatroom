@@ -1,0 +1,16 @@
+.message {
+  margin: 1.5rem 2rem;
+
+  &__author {
+    margin-bottom: 1.3rem;
+    margin-left: 1rem;
+  }
+
+  &__content {
+    position: relative;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-radius: 25px;
+    display: inline-block;
+  }
+}

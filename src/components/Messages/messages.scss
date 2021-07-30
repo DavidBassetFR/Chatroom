@@ -1,0 +1,19 @@
+@use 'src/styles/vars';
+
+.messages {
+  height: calc(100% - #{vars.$input-height});
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  animation: pop 0.4s cubic-bezier(.48,1.7,.87,1);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+   transform: scale(1);
+   opacity: 1;
+  }
+}

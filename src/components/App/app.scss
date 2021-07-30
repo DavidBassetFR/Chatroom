@@ -1,0 +1,8 @@
+@use 'src/styles/vars';
+
+.app {
+  background-color: vars.$primary;
+  width: 500px;
+  margin: 0 auto;
+  height: 100%;
+}
