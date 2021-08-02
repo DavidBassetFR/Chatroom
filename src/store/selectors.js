@@ -6,6 +6,13 @@
 // une projection (donnée dérivée)
 export const getHighestId = (state) => {
   const ids = state.messages.map((msg) => msg.id);
+
+  if (ids.length === 0) {
+    // si j'ai pas d'id...
+    // disons que le plus grand id est 0
+    return 0;
+  }
+
   // on déverse ce tableau dans les parametres de Math.max pour obtenir... le max (si si)
   return Math.max(...ids);
 };

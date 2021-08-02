@@ -18,13 +18,9 @@ import {
   sur lequel il pourra tout a fait faire des store.dispach, store.getState
 */
 const authMiddleware = (store) => (next) => (action) => {
-  console.log('Je suis authMiddleware et je vois passer laction ', action);
-
   // dans un middleware, on peut faire des conditions
   // afin de réagir a différentes actions
   if (action.type === SUBMIT_LOGIN) {
-    console.log('je suis authMiddleware et jai trouve une action qui minteresse : SUBMIT_LOGIN');
-
     // dans un middleware, si l'on souhaite accéder a des donénes du state
     // on peut tout simplement faire un store.getState();
     const state = store.getState();
@@ -32,7 +28,7 @@ const authMiddleware = (store) => (next) => (action) => {
     // on prépare une requete AXIOS
     const config = {
       method: 'post',
-      url: 'http://localhost:3001/login',
+      url: 'https://pacific-retreat-59034.herokuapp.com/login',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -46,12 +42,9 @@ const authMiddleware = (store) => (next) => (action) => {
     // ca y est, on fait la requête
     axios(config)
       .then((response) => {
-        console.log('la reponse de la requete : ', response.data);
-        console.log('authMiddleware dispatche une NOUVELLE action : LOGIN_SUCCESS');
         store.dispatch(createLoginSuccessAction(response.data.pseudo));
       })
-      .catch((error) => {
-        console.log('il y a eu une erreur : ', error);
+      .catch(() => {
         store.dispatch(createLoginErrorAction());
       });
   }

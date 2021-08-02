@@ -1,6 +1,7 @@
 import { getHighestId } from './selectors';
 import {
   ADD_MESSAGE,
+  SEND_MESSAGE,
   SET_INPUT_VALUE,
   TOGGLE_SETTINGS,
   SET_SETTINGS_FIELD_VALUE,
@@ -9,28 +10,7 @@ import {
 } from './actions';
 
 const initialState = {
-  messages: [
-    {
-      id: 1,
-      author: 'David',
-      content: 'Bienvenue sur ma chatroom fictive, elle est codée en React/Redux',
-    },
-    {
-      id: 2,
-      author: 'Un utilisateur',
-      content: 'Comment puis-je créer un compte ?',
-    },
-    {
-      id: 3,
-      author: 'David',
-      content: 'La fonctionnalité de création de compte est indisponible pour le moment, mais je vous invite à vous contacter via :  Email : hello@david.fr et en password : test',
-    },
-    {
-      id: 3,
-      author: 'David',
-      content: 'Je vous invite à faire quelques tests, cette chatroom restera cependant fictive',
-    },
-  ],
+  messages: [],
   nickname: null,
   inputValue: '',
   settings: {
@@ -48,6 +28,11 @@ const reducer = (oldState = initialState, action) => {
         ...oldState,
         inputValue: action.value,
       };
+    case SEND_MESSAGE:
+      return {
+        ...oldState,
+        inputValue: '',
+      };
     case ADD_MESSAGE: {
       // on veut fabriquer un nouveau message
       // il faudra s'occuper aussi de générer un nouvel id
@@ -63,8 +48,11 @@ const reducer = (oldState = initialState, action) => {
         // si on un max, on ajoute 1,
         // sinon, c'est le premier message, on donne l'id 1
         id: maxId ? maxId + 1 : 1,
-        author: oldState.nickname,
-        content: oldState.inputValue,
+        // pour constuire le message a ajouter dans le tableau messages
+        // on utilise desormais un parametre action.message
+        // qui correspond a ce qui est recu dans le websocket
+        author: action.message.author,
+        content: action.message.content,
       };
 
       // on renvoie un nouveau state

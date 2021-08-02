@@ -7,7 +7,7 @@
   constatons également que le middleware a accès a l'instance du store
   sur lequel il pourra tout a fait faire des store.dispach, store.getState
 */
-const logMiddleware = (store) => (next) => (action) => {
+const logMiddleware = () => (next) => (action) => {
   console.log('Je suis logMiddleware et je vois passer laction ', action);
   // pour l'instant, je vais laisser passer toutes les actions, avec next()
   next(action);

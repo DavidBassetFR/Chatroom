@@ -4,7 +4,7 @@ import Form from 'src/components/Form';
 
 import { isUserLogged } from 'src/store/selectors';
 
-import { createAddMessageAction, createSetInputValueAction } from 'src/store/actions';
+import { createSendMessageAction, createSetInputValueAction } from 'src/store/actions';
 
 // "transforme le state en props"
 const mapStateToProps = (state) => ({
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(createSetInputValueAction(newValue));
   },
   onMessageSubmit: () => {
-    dispatch(createAddMessageAction());
+    dispatch(createSendMessageAction());
   },
 });
 

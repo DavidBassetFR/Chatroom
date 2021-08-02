@@ -27,7 +27,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSettingsSubmit: (event) => {
     event.preventDefault();
-    console.log('onSettingsSubmit. Je dispatch une action de type SUBMIT_LOGIN');
     dispatch(createSubmitLoginAction());
   },
   onToggleSettings: () => {

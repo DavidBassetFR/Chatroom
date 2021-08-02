@@ -12,5 +12,39 @@
     background-color: white;
     border-radius: 25px;
     display: inline-block;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      display: block;
+      bottom: 45px;
+      left: 20px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid white;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid white;
+    }
+  }
+
+  &--mine {
+    text-align: right;
+  }
+
+  // pour adapter la petite fleche
+  // je cible le pseudo element de la classe message__content dont le parent
+  // a la classe message--mine
+  &--mine > &__content::before {
+    border-left: 10px solid white;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid white;
+    left: auto;
+    right: 20px;
+  }
+
+  &--mine > &__author {
+    margin-right: 1rem;
   }
 }

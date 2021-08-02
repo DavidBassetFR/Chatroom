@@ -64,6 +64,15 @@ module.exports = {
           outputPath: 'fonts/',
         },
       },
+      {
+        test: /\.(mp3)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { outputPath: 'sound/' },
+          },
+        ],
+      },
 
       // Images
       {
